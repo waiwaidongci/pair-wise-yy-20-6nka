@@ -17,22 +17,55 @@
         <button id="playBtn" type="button">播放</button>
         <button id="stopBtn" type="button">停止</button>
         <button id="saveBtn" type="button">保存方案</button>
+        <span class="key-hint">空格 暂停 / 继续</span>
       </div>
     </header>
 
     <section class="controls">
       <label>剧目片段<input id="pieceName" placeholder="如：出场锣鼓-慢起"></label>
       <label>速度BPM<input id="bpmInput" type="number" min="40" max="220" value="96"></label>
-      <label>循环小节
-        <select id="loopSelect">
-          <option value="">全段</option>
-          <option value="0">第1小节</option>
-          <option value="1">第2小节</option>
-          <option value="2">第3小节</option>
-          <option value="3">第4小节</option>
-        </select>
-      </label>
       <label>难点批注<input id="noteInput" placeholder="如：第2小节小锣晚半拍"></label>
+    </section>
+
+    <section class="queue-panel">
+      <div class="queue-head">
+        <h2>乐句队列</h2>
+        <button id="clearQueueBtn" class="ghost-btn" type="button">清空队列</button>
+      </div>
+      <form id="phraseForm" class="phrase-form">
+        <label class="phrase-name">乐句名称
+          <input id="phraseName" placeholder="如：起霸、圆场、收头">
+        </label>
+        <label>起始小节
+          <select id="phraseStart">
+            <option value="1">第1小节</option>
+            <option value="2">第2小节</option>
+            <option value="3">第3小节</option>
+            <option value="4">第4小节</option>
+          </select>
+        </label>
+        <label>结束小节
+          <select id="phraseEnd">
+            <option value="1">第1小节</option>
+            <option value="2" selected>第2小节</option>
+            <option value="3">第3小节</option>
+            <option value="4">第4小节</option>
+          </select>
+        </label>
+        <label>重复遍数
+          <input id="phraseRepeats" type="number" min="1" max="99" value="2">
+        </label>
+        <button type="submit">加入队列</button>
+      </form>
+
+      <div id="nowPlaying" class="now-playing">
+        <span id="nowStatus" class="now-status">待机</span>
+        <strong id="nowName">全段播放</strong>
+        <span id="nowMeta" class="now-meta"></span>
+      </div>
+
+      <ol id="queueList" class="queue-list"></ol>
+      <p id="queueEmpty" class="queue-empty-hint">队列为空，当前按全段循环播放。</p>
     </section>
 
     <section class="stage">
